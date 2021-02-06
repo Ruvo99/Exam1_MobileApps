@@ -33,6 +33,7 @@ flutter:
 
   assets:
     - assets/images/app_icon.png
+    - assets/images/backgroundSplashScreen.png
   #   - images/a_dot_ham.jpeg
 
   # fonts:
