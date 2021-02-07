@@ -16,9 +16,10 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
+          // height: MediaQuery.of(context).size.height,
+          // width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
@@ -177,8 +178,8 @@ class _RegisterState extends State<Register> {
                 SizedBox(height: 20.0),
                 TextButton(
                   onPressed: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => Login()));
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) => Login()));
                   },
                   child: RichText(
                     textAlign: TextAlign.center,
