@@ -15,8 +15,8 @@ class _SignInPageState extends State<SignInPage> {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.centerLeft,
+            begin: Alignment.topCenter,
+            end: Alignment.center,
             colors: [cuppingBlue, cuppingBlack]),
         ),
         child: Center(
@@ -37,6 +37,31 @@ class _SignInPageState extends State<SignInPage> {
                 'cupping',
                 style: TextStyle(fontSize: 70, color: Colors.white),
               ),
+              SizedBox(
+                height: 64.0,
+              ),
+              SizedBox(
+                width: 300.0,
+                child:  TextButton(
+                onPressed: (){},
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(cuppingDarkGrey)
+                  ), 
+                child: Text('REGISTRATE', style: TextStyle(color: Colors.black),
+                )
+              ),
+              ),
+              SizedBox(
+                width: 300.0,
+                child:  TextButton(
+                onPressed: (){},
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(cuppingDarkGrey)
+                  ), 
+                child: Text('INGRESA', style: TextStyle(color: Colors.black),
+                )
+              ),
+              )
             ],
           ),
         ),
