@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'colors.dart';
 
 class SignInPage extends StatefulWidget {
   SignInPage({Key key}) : super(key: key);
@@ -11,14 +12,33 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            
-            Text('Page in progress...'),
-
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.centerLeft,
+            colors: [cuppingBlue, cuppingBlack]),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: FractionallySizedBox(
+                  widthFactor: 0.8,
+                  child: Icon(
+                    Icons.local_cafe_outlined,
+                    size: 100,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Text(
+                'cupping',
+                style: TextStyle(fontSize: 70, color: Colors.white),
+              ),
+            ],
+          ),
         ),
       ),
     );
