@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'colors.dart';
+import 'sign_in/login.dart';
+import 'sign_in/register.dart';
 
 class SignInPage extends StatefulWidget {
   SignInPage({Key key}) : super(key: key);
@@ -42,8 +44,13 @@ class _SignInPageState extends State<SignInPage> {
               ),
               SizedBox(
                 width: 300.0,
+                height: 50.0,
                 child:  TextButton(
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => Register())
+                  );
+                },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(cuppingDarkGrey)
                   ), 
@@ -52,9 +59,17 @@ class _SignInPageState extends State<SignInPage> {
               ),
               ),
               SizedBox(
+                height: 24.0
+              ),
+              SizedBox(
                 width: 300.0,
+                height: 50.0,
                 child:  TextButton(
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => Login())
+                  );
+                },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(cuppingDarkGrey)
                   ), 
