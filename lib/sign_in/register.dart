@@ -18,7 +18,6 @@ class _RegisterState extends State<Register> {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
-          //Comment
           // height: MediaQuery.of(context).size.height,
           // width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
