@@ -1,3 +1,7 @@
+import 'package:estructura_practica_1/drinks/hot_drinks_page.dart';
+import 'package:estructura_practica_1/grains/grains_page.dart';
+import 'package:estructura_practica_1/models/product_hot_drinks.dart';
+import 'package:estructura_practica_1/models/product_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/home/item_home.dart';
 import 'package:estructura_practica_1/profile.dart';
@@ -15,8 +19,14 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: true,
         title: Text(widget.title),
         actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {},
+          ),
           IconButton(
             icon: Icon(Icons.person),
             onPressed: () {
@@ -26,10 +36,6 @@ class _HomeState extends State<Home> {
               );
             },
           ),
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
-          )
         ],
       ),
       body: ListView(
@@ -41,18 +47,27 @@ class _HomeState extends State<Home> {
               image: "https://i.imgur.com/XJ0y9qs.png",
             ),
           ),
-          ItemHome(
-            title: "Postres",
-            image: "https://i.imgur.com/fI7Tezv.png",
+          GestureDetector(
+            onTap: _openDessertPage,
+            child: ItemHome(
+              title: "Postres",
+              image: "https://i.imgur.com/fI7Tezv.png",
+            ),
           ),
-          ItemHome(
-            title: "Granos",
-            image: "https://i.imgur.com/5MZocC1.png",
+          GestureDetector(
+            onTap: _openGrainsPage,
+            child: ItemHome(
+              title: "Granos",
+              image: "https://i.imgur.com/5MZocC1.png",
+            ),
           ),
-          ItemHome(
-            // TODO: Al hacer clic, que muestre un snackbar de "Proximamente"
-            title: "Tazas",
-            image: "https://i.imgur.com/fMjtSpy.png",
+          GestureDetector(
+            onTap: _showSnackbar,
+            child: ItemHome(
+              // TODO: Al hacer clic, que muestre un snackbar de "Proximamente"
+              title: "Tazas",
+              image: "https://i.imgur.com/fMjtSpy.png",
+            ),
           ),
         ],
       ),
@@ -64,20 +79,28 @@ class _HomeState extends State<Home> {
 
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) {
-          return null;
-        },
+        builder: (context) => HotDrinksPage(
+            drinksList: ProductRepository.loadProducts(ProductType.BEBIDAS)),
       ),
     );
   }
 
   void _openGrainsPage() {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => null),
+      MaterialPageRoute(
+        builder: (context) => GrainsPage(
+            grainsList: ProductRepository.loadProducts(ProductType.GRANO)),
+      ),
     );
   }
 
   void _openDessertPage() {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (context) => null),
+    );
+  }
+
+  void _showSnackbar() {
     Navigator.of(context).push(
       MaterialPageRoute(builder: (context) => null),
     );

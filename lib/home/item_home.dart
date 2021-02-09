@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../colors.dart';
+
 class ItemHome extends StatelessWidget {
   final String title;
   final String image;
@@ -20,46 +22,23 @@ class ItemHome extends StatelessWidget {
             child: Card(
               elevation: 4.0,
               margin: EdgeInsets.all(24.0),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-              color: Colors.indigo,
+              color: cuppingGrey,
               child: Container(height: 180),
             ),
           ),
           Container(
-            height: 160,
-            margin: EdgeInsets.only(top: 28, bottom: 24, left: 24, right: 24),
-            decoration: BoxDecoration(
-              color: Colors.grey[200],
-              borderRadius: BorderRadius.all(
-                Radius.circular(30),
+            margin: EdgeInsets.only(left: 30, top: 80),
+            width: 160,
+            decoration: BoxDecoration(),
+            child: Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Text(
+                "$title",
+                style: Theme.of(context)
+                    .textTheme
+                    .headline5
+                    .copyWith(fontWeight: FontWeight.bold),
               ),
-            ),
-            child: Row(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(left: 16),
-                  width: 160,
-                  decoration: BoxDecoration(
-                    color: Colors.yellow[300],
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(30),
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(24.0),
-                    child: Text(
-                      "$title",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline5
-                          .copyWith(fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-              ],
             ),
           ),
           Align(
