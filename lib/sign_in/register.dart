@@ -1,4 +1,6 @@
+import 'package:estructura_practica_1/home/home.dart';
 import 'package:estructura_practica_1/sign_in/login.dart';
+import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 import '../colors.dart';
 
@@ -22,30 +24,23 @@ class _RegisterState extends State<Register> {
           // width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.center,
-                colors: [cuppingBlue, cuppingBlack]),
+              begin: Alignment.topCenter,
+              end: Alignment.center,
+              colors: [cuppingBlue, cuppingBlack],
+            ),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(16.0),
             child: Column(
               // mainAxisAlignment: MainAxisAlignment.center,
               // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 72.0,
+                  height: 76.0,
                 ),
                 FractionallySizedBox(
-                  widthFactor: 1,
-                  child: Icon(
-                    Icons.local_cafe_outlined,
-                    size: 60,
-                    color: Colors.white,
-                  ),
-                ),
-                Text(
-                  'cupping',
-                  style: TextStyle(fontSize: 55, color: Colors.white),
+                  widthFactor: 0.6,
+                  child: Image.asset('assets/images/cupping.png'),
                 ),
                 SizedBox(height: 80.0),
                 Row(
@@ -165,7 +160,8 @@ class _RegisterState extends State<Register> {
                             ),
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => Register()));
+                                  builder: (context) =>
+                                      Home(title: APP_TITLE)));
                             },
                             child: Text(
                               "REGISTRATE",
