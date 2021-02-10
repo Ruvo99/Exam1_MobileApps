@@ -3,6 +3,7 @@ import 'package:estructura_practica_1/sign_in/register.dart';
 import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 import '../colors.dart';
+//TODO: ask about how to fit the background to the whole screen in different devices.
 
 class Login extends StatefulWidget {
   Login({Key key}) : super(key: key);
@@ -19,8 +20,8 @@ class _LoginState extends State<Login> {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
+          //height: MediaQuery.of(context).size.height,
+          //width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,

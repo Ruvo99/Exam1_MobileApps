@@ -1,3 +1,4 @@
+import 'package:estructura_practica_1/models/product_desserts.dart';
 import 'package:estructura_practica_1/models/product_hot_drinks.dart';
 import 'package:estructura_practica_1/models/product_grains.dart';
 
@@ -9,9 +10,55 @@ class ProductRepository {
     // ----------------------       Tazas      ----------------------------//
     // ----------------------              ----------------------------//
 
-    //if (prodType == ProductType.POSTRES) {
-    // TODO: Agregar al menos 5 productos "postres"
-    //}
+    if (prodType == ProductType.POSTRES) {
+      return <ProductDessert>[
+        ProductDessert(
+          productTitle: "Lavazza",
+          productDescription: "Endulzado con aromas florales.",
+          productImage:
+              "https://www.lavazza.it/content/dam/lavazza/products/caffe/macinato/moka/qualitaoro/new_render/tin_250_en/Tin-oro-en-250-thumb.png",
+          productStyle: ProductStyle.REBANADA,
+          productAmount: 0,
+          productLiked: false,
+        ),
+        ProductDessert(
+          productTitle: "Lavazza",
+          productDescription: "Endulzado con aromas florales.",
+          productImage:
+              "https://www.lavazza.it/content/dam/lavazza/products/caffe/macinato/moka/qualitaoro/new_render/tin_250_en/Tin-oro-en-250-thumb.png",
+          productStyle: ProductStyle.REBANADA,
+          productAmount: 0,
+          productLiked: false,
+        ),
+        ProductDessert(
+          productTitle: "Lavazza",
+          productDescription: "Endulzado con aromas florales.",
+          productImage:
+              "https://www.lavazza.it/content/dam/lavazza/products/caffe/macinato/moka/qualitaoro/new_render/tin_250_en/Tin-oro-en-250-thumb.png",
+          productStyle: ProductStyle.REBANADA,
+          productAmount: 0,
+          productLiked: false,
+        ),
+        ProductDessert(
+          productTitle: "Lavazza",
+          productDescription: "Endulzado con aromas florales.",
+          productImage:
+              "https://www.lavazza.it/content/dam/lavazza/products/caffe/macinato/moka/qualitaoro/new_render/tin_250_en/Tin-oro-en-250-thumb.png",
+          productStyle: ProductStyle.REBANADA,
+          productAmount: 0,
+          productLiked: false,
+        ),
+        ProductDessert(
+          productTitle: "Lavazza",
+          productDescription: "Endulzado con aromas florales.",
+          productImage:
+              "https://www.lavazza.it/content/dam/lavazza/products/caffe/macinato/moka/qualitaoro/new_render/tin_250_en/Tin-oro-en-250-thumb.png",
+          productStyle: ProductStyle.REBANADA,
+          productAmount: 0,
+          productLiked: false,
+        )
+      ];
+    }
 
     // ----------------------              ----------------------------//
     // ----------------------       Granos      ----------------------------//
@@ -25,6 +72,7 @@ class ProductRepository {
               "https://www.lavazza.it/content/dam/lavazza/products/caffe/macinato/moka/qualitaoro/new_render/tin_250_en/Tin-oro-en-250-thumb.png",
           productWeight: ProductWeight.KILO,
           productAmount: 0,
+          productLiked: false,
         ),
         ProductGrains(
           productTitle: "Guilis",
@@ -33,6 +81,7 @@ class ProductRepository {
               "https://www.cafesguilis.com/wp-content/uploads/2018/08/mezcla_especial_1Kg.jpg",
           productWeight: ProductWeight.KILO,
           productAmount: 0,
+          productLiked: false,
         ),
         ProductGrains(
           productTitle: "Illy",
@@ -42,6 +91,7 @@ class ProductRepository {
               "https://http2.mlstatic.com/illy-cafe-en-grano-etiopia-arabica-seleccion-de-un-solo-or-D_NQ_NP_987783-MLM31233980209_062019-F.jpg",
           productWeight: ProductWeight.KILO,
           productAmount: 0,
+          productLiked: false,
         ),
         ProductGrains(
           productTitle: "Sanani",
@@ -51,6 +101,7 @@ class ProductRepository {
               "https://http2.mlstatic.com/cafe-tostado-en-granos-1kg-origen-colombia-maquinas-express-D_NQ_NP_947249-MLA31115265526_062019-Q.jpg",
           productWeight: ProductWeight.KILO,
           productAmount: 0,
+          productLiked: false,
         ),
         ProductGrains(
           productTitle: "La Mexicana",
@@ -60,6 +111,7 @@ class ProductRepository {
               "https://www.lamexicana.es/404-large_default/cafe-1890-mezcla-suave.jpg",
           productWeight: ProductWeight.KILO,
           productAmount: 0,
+          productLiked: false,
         ),
       ];
     // ----------------------              ----------------------------//
@@ -74,6 +126,7 @@ class ProductRepository {
               "https://ineedcoffee.com/wp-content/uploads/2007/09/IMG_9259.jpg",
           productSize: ProductSize.M,
           productAmount: 0,
+          productLiked: false,
         ),
         ProductHotDrinks(
           productTitle: "Americano",
@@ -83,6 +136,7 @@ class ProductRepository {
               "https://cafe.omcns.com/wp-content/uploads/2018/08/Americano-2.jpg",
           productSize: ProductSize.M,
           productAmount: 0,
+          productLiked: false,
         ),
         ProductHotDrinks(
           productTitle: "Expresso",
@@ -92,6 +146,7 @@ class ProductRepository {
               "https://cdn.cnn.com/cnnnext/dam/assets/200120171537-espresso-machine-stock-large-169.jpg",
           productSize: ProductSize.M,
           productAmount: 0,
+          productLiked: false,
         ),
         ProductHotDrinks(
           productTitle: "Lungo",
@@ -101,6 +156,7 @@ class ProductRepository {
               "https://coffeegearx.com/wp-content/uploads/2019/08/What-Does-a-Lungo-Taste-Like.jpg",
           productSize: ProductSize.M,
           productAmount: 0,
+          productLiked: false,
         ),
         ProductHotDrinks(
           productTitle: "Café bombón",
@@ -109,6 +165,7 @@ class ProductRepository {
           productImage: "https://ua.all.biz/img/ua/catalog/4944889.jpg",
           productSize: ProductSize.M,
           productAmount: 0,
+          productLiked: false,
         ),
         ProductHotDrinks(
           productTitle: "Mocca",
@@ -118,6 +175,7 @@ class ProductRepository {
               "https://www.juanvaldezcafe.com/sites/default/files/mocca_grande.png",
           productSize: ProductSize.M,
           productAmount: 0,
+          productLiked: false,
         ),
         ProductHotDrinks(
           productTitle: "Café con leche",
@@ -126,6 +184,7 @@ class ProductRepository {
               "https://www.goodfood.com.au/content/dam/images/3/f/6/p/i/image.related.articleLeadwide.620x349.3f2ru.png/1411331099390.jpg",
           productSize: ProductSize.M,
           productAmount: 0,
+          productLiked: false,
         ),
         ProductHotDrinks(
           productTitle: "Café vienés",
@@ -134,6 +193,7 @@ class ProductRepository {
               "https://www.hogarmania.com/archivos/201105/vienes-xl-668x400x80xX.jpg",
           productSize: ProductSize.M,
           productAmount: 0,
+          productLiked: false,
         ),
         ProductHotDrinks(
           productTitle: "Macchiato",
@@ -142,6 +202,7 @@ class ProductRepository {
               "https://www.nespresso.com/ncp/res/uploads/recipes/nespresso-recipes-Macchiato.jpg",
           productSize: ProductSize.M,
           productAmount: 0,
+          productLiked: false,
         ),
         ProductHotDrinks(
           productTitle: "Cappuccino",
@@ -150,6 +211,7 @@ class ProductRepository {
               "https://www.perfectdailygrind.com/wp-content/uploads/2019/02/cappuccino-1.png",
           productSize: ProductSize.M,
           productAmount: 0,
+          productLiked: false,
         ),
         ProductHotDrinks(
           productTitle: "Azteca",
@@ -159,6 +221,7 @@ class ProductRepository {
               "https://www.gastronomiavasca.net/uploads/image/file/6838/w700_caf__azteca.jpg",
           productSize: ProductSize.M,
           productAmount: 0,
+          productLiked: false,
         ),
       ];
     return List(); // otherwise empty list

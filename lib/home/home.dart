@@ -1,6 +1,7 @@
+import 'package:estructura_practica_1/colors.dart';
+import 'package:estructura_practica_1/desserts/desserts_page.dart';
 import 'package:estructura_practica_1/drinks/hot_drinks_page.dart';
 import 'package:estructura_practica_1/grains/grains_page.dart';
-import 'package:estructura_practica_1/models/product_hot_drinks.dart';
 import 'package:estructura_practica_1/models/product_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/home/item_home.dart';
@@ -64,7 +65,6 @@ class _HomeState extends State<Home> {
           GestureDetector(
             onTap: _showSnackbar,
             child: ItemHome(
-              // TODO: Al hacer clic, que muestre un snackbar de "Proximamente"
               title: "Tazas",
               image: "https://i.imgur.com/fMjtSpy.png",
             ),
@@ -75,8 +75,6 @@ class _HomeState extends State<Home> {
   }
 
   void _openHotDrinksPage() {
-    // TODO: completar en navigator pasando los parametros a la pagina de HotDrinksPage
-
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => HotDrinksPage(
@@ -96,13 +94,19 @@ class _HomeState extends State<Home> {
 
   void _openDessertPage() {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => null),
+      MaterialPageRoute(
+        builder: (context) => DessertsPage(
+            dessertsList: ProductRepository.loadProducts(ProductType.POSTRES)),
+      ),
     );
   }
 
   void _showSnackbar() {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => null),
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text('Proximamente'),
+        backgroundColor: cuppingBlue,
+      ),
     );
   }
 }

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/drinks/item_hot_drinks.dart';
 import 'package:estructura_practica_1/models/product_hot_drinks.dart';
 
-class HotDrinksPage extends StatelessWidget {
+import '../profile.dart';
+
+class HotDrinksPage extends StatefulWidget {
   final List<ProductHotDrinks> drinksList;
   HotDrinksPage({
     Key key,
@@ -10,16 +12,37 @@ class HotDrinksPage extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  _HotDrinksPageState createState() => _HotDrinksPageState();
+}
+
+class _HotDrinksPageState extends State<HotDrinksPage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Bebidas"),
+        centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.person),
+            onPressed: () {
+              Navigator.of(context).push(
+                // TODO: Eliminar este boton y adaptar todo el contenido de la pagina de perfil en un Drawer aqui en la pantalla Home
+                MaterialPageRoute(builder: (_) => Profile()),
+              );
+            },
+          ),
+        ],
       ),
       body: ListView.builder(
-        itemCount: drinksList.length,
+        itemCount: widget.drinksList.length,
         itemBuilder: (BuildContext context, int index) {
           return ItemHotDrinks(
-            drink: drinksList[index],
+            drink: widget.drinksList[index],
           );
         },
       ),
