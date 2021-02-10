@@ -3,6 +3,7 @@ import 'package:estructura_practica_1/drinks/item_hot_drinks.dart';
 import 'package:estructura_practica_1/models/product_hot_drinks.dart';
 
 import '../profile.dart';
+import 'item_hot_drinks_details.dart';
 
 class HotDrinksPage extends StatefulWidget {
   final List<ProductHotDrinks> drinksList;
@@ -41,8 +42,19 @@ class _HotDrinksPageState extends State<HotDrinksPage> {
       body: ListView.builder(
         itemCount: widget.drinksList.length,
         itemBuilder: (BuildContext context, int index) {
-          return ItemHotDrinks(
+          return GestureDetector(
+            onTap: (){
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => ItemHotDrinksDetails(),
+                  settings: RouteSettings(
+                    arguments: widget.drinksList[index]),
+                    )
+              );
+            },
+            child: ItemHotDrinks(
             drink: widget.drinksList[index],
+            ),
           );
         },
       ),

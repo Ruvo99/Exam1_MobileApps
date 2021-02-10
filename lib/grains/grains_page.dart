@@ -1,3 +1,4 @@
+import 'package:estructura_practica_1/grains/item_grains_details.dart';
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/grains/item_grains.dart';
 import 'package:estructura_practica_1/models/product_grains.dart';
@@ -15,7 +16,7 @@ class GrainsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Granos"),
-                centerTitle: true,
+        centerTitle: true,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.shopping_cart),
@@ -35,8 +36,14 @@ class GrainsPage extends StatelessWidget {
       body: ListView.builder(
         itemCount: grainsList.length,
         itemBuilder: (BuildContext context, int index) {
-          return ItemGrains(
-            grain: grainsList[index],
+          return GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ItemGrainsDetails()));
+            },
+            child: ItemGrains(
+              grain: grainsList[index],
+            ),
           );
         },
       ),
