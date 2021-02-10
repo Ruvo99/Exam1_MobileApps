@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:estructura_practica_1/app.dart';
 
-void main() => runApp(CuppingApp());
+void main() => runApp(CuppingApp()); 
 
 // class MyApp extends StatelessWidget {
 //   // This widget is the root of your application.

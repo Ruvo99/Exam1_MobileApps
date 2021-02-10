@@ -17,7 +17,7 @@ class ItemGrains extends StatefulWidget {
 class _ItemGrainsState extends State<ItemGrains> {
   @override
   Widget build(BuildContext context) {
-     return Container(
+    return Container(
       height: 220,
       child: Stack(
         children: [
@@ -54,9 +54,10 @@ class _ItemGrainsState extends State<ItemGrains> {
               child: Text(
                 "${widget.grain.productTitle}",
                 style: Theme.of(context).textTheme.headline5.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: cuppingWhite,
-                    fontSize: 22.0),
+                      fontWeight: FontWeight.bold,
+                      color: cuppingWhite,
+                      fontSize: 22.0,
+                    ),
               ),
             ),
           ),
@@ -69,9 +70,10 @@ class _ItemGrainsState extends State<ItemGrains> {
               child: Text(
                 "\$${widget.grain.productPrice}",
                 style: Theme.of(context).textTheme.headline5.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: cuppingBlack,
-                    fontSize: 29.0),
+                      fontWeight: FontWeight.bold,
+                      color: cuppingBlack,
+                      fontSize: 29.0,
+                    ),
               ),
             ),
           ),
@@ -95,16 +97,17 @@ class _ItemGrainsState extends State<ItemGrains> {
             width: 180,
             decoration: BoxDecoration(),
             child: Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: IconButton(
-                    icon: widget.grain.liked
-                        ? Icon(Icons.favorite)
-                        : Icon(Icons.favorite_border_outlined),
-                    onPressed: () {
-                      setState(() {
-                        widget.grain.liked = !widget.grain.liked;
-                      });
-                    })),
+              padding: const EdgeInsets.all(24.0),
+              child: IconButton(
+                  icon: widget.grain.liked
+                      ? Icon(Icons.favorite)
+                      : Icon(Icons.favorite_border_outlined),
+                  onPressed: () {
+                    setState(() {
+                      widget.grain.liked = !widget.grain.liked;
+                    });
+                  }),
+            ),
           ),
         ],
       ),
