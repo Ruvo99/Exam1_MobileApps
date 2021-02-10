@@ -12,7 +12,7 @@ class ProductDessert {
   ProductStyle productStyle; // tamano del producto
   double productPrice; // precio del producto autocalculado
   final int productAmount; // cantidad de producto por comprar
-  final bool liked;
+  bool liked;
 
   ProductDessert({
     @required this.productLiked,
