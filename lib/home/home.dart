@@ -18,7 +18,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  ProductCart cart = new ProductCart(drinks: [], grains: [], desserts: []);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,24 +77,12 @@ class _HomeState extends State<Home> {
   }
 
   void _openHotDrinksPage() {
-    Navigator.of(context)
-        .push(
+    Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => HotDrinksPage(
             drinksList: ProductRepository.loadProducts(ProductType.BEBIDAS)),
       ),
-    )
-        .then((selection) {
-      if (selection != null) {
-        print(selection);
-        cart.drinks += selection;
-        print(cart.drinks);
-      } else {
-        print("no hay");
-      }
-      // print(resultado.productTitle);
-    });
-    ;
+    );
   }
 
   void _openGrainsPage() {
