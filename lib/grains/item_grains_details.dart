@@ -1,8 +1,7 @@
 import 'package:estructura_practica_1/models/product_cart.dart';
 import 'package:estructura_practica_1/models/product_grains.dart';
 import 'package:flutter/material.dart';
-
-import '../colors.dart';
+import 'package:estructura_practica_1/colors.dart';
 
 class ItemGrainsDetails extends StatefulWidget {
   ItemGrainsDetails({Key key}) : super(key: key);
@@ -65,14 +64,17 @@ class _ItemGrainsDetailsState extends State<ItemGrainsDetails> {
                     width: 180,
                     decoration: BoxDecoration(),
                     child: IconButton(
-                        icon: grains.liked
-                            ? Icon(Icons.favorite)
-                            : Icon(Icons.favorite_border_outlined),
-                        onPressed: () {
-                          setState(() {
+                      icon: grains.liked
+                          ? Icon(Icons.favorite)
+                          : Icon(Icons.favorite_border_outlined),
+                      onPressed: () {
+                        setState(
+                          () {
                             grains.liked = !grains.liked;
-                          });
-                        }),
+                          },
+                        );
+                      },
+                    ),
                   ),
                 )
               ],
@@ -205,22 +207,13 @@ class _ItemGrainsDetailsState extends State<ItemGrainsDetails> {
                         backgroundColor: cuppingGrey,
                       ),
                       onPressed: () {
-                        if (cart.grains.contains(grains)) {
-                          ScaffoldMessenger.of(context).showSnackBar(
+                        Navigator.of(context).pop(grains);
+                        ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              content: Text('Elemento ya esta en el carrito'),
+                              content: Text('${grains.productTitle} agregado al carrito'),
                               backgroundColor: cuppingBlue,
                             ),
                           );
-                        } else {
-                          cart.grains.add(grains);
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text('Elemento agregado al carrito'),
-                              backgroundColor: cuppingBlue,
-                            ),
-                          );
-                        }
                       },
                       child: Text(
                         "AGREGAR AL CARRITO",

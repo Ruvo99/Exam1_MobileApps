@@ -67,14 +67,17 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                       width: 180,
                       decoration: BoxDecoration(),
                       child: IconButton(
-                          icon: hotDrink.liked
-                              ? Icon(Icons.favorite)
-                              : Icon(Icons.favorite_border_outlined),
-                          onPressed: () {
-                            setState(() {
+                        icon: hotDrink.liked
+                            ? Icon(Icons.favorite)
+                            : Icon(Icons.favorite_border_outlined),
+                        onPressed: () {
+                          setState(
+                            () {
                               hotDrink.liked = !hotDrink.liked;
-                            });
-                          }),
+                            },
+                          );
+                        },
+                      ),
                     ),
                   )
                 ],

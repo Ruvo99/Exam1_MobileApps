@@ -99,12 +99,21 @@ class _HomeState extends State<Home> {
   }
 
   void _openGrainsPage() {
-    Navigator.of(context).push(
+    Navigator.of(context)
+        .push(
       MaterialPageRoute(
         builder: (context) => GrainsPage(
             grainsList: ProductRepository.loadProducts(ProductType.GRANO)),
       ),
-    );
+    )
+        .then((selection) {
+      if (selection != null) {
+        cart.grains += selection;
+        print(cart.grains);
+      } else {
+        print('You have not selected anything yet');
+      }
+    });
   }
 
   void _openDessertPage() {
