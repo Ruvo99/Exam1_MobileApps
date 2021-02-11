@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/home/item_home.dart';
 import 'package:estructura_practica_1/profile.dart';
 
+import 'package:estructura_practica_1/models/product_cart.dart';
+
 class Home extends StatefulWidget {
   final String title;
   Home({Key key, this.title}) : super(key: key);
@@ -16,6 +18,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  ProductCart cart = new ProductCart(drinks: [], grains: [], desserts: []);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,12 +78,24 @@ class _HomeState extends State<Home> {
   }
 
   void _openHotDrinksPage() {
-    Navigator.of(context).push(
+    Navigator.of(context)
+        .push(
       MaterialPageRoute(
         builder: (context) => HotDrinksPage(
             drinksList: ProductRepository.loadProducts(ProductType.BEBIDAS)),
       ),
-    );
+    )
+        .then((selection) {
+      if (selection != null) {
+        print(selection);
+        cart.drinks += selection;
+        print(cart.drinks);
+      } else {
+        print("no hay");
+      }
+      // print(resultado.productTitle);
+    });
+    ;
   }
 
   void _openGrainsPage() {
