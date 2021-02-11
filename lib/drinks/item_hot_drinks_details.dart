@@ -233,7 +233,16 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                               borderRadius: BorderRadius.circular(10.0)),
                           backgroundColor: cuppingGrey,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pop(hotDrink);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                  '${hotDrink.productTitle} agregado al carrito'),
+                              backgroundColor: cuppingBlue,
+                            ),
+                          );
+                        },
                         child: Text(
                           "AGREGAR AL CARRITO",
                           style: TextStyle(color: cuppingBlack),
