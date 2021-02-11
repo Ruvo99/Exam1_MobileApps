@@ -39,7 +39,9 @@ class GrainsPage extends StatelessWidget {
           return GestureDetector(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => ItemGrainsDetails()));
+                builder: (context) => ItemGrainsDetails(),
+                settings: RouteSettings(arguments: grainsList[index]),
+              ));
             },
             child: ItemGrains(
               grain: grainsList[index],
