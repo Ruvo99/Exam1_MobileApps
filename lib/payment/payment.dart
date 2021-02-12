@@ -1,7 +1,6 @@
 import 'package:estructura_practica_1/payment/pay_option.dart';
 import 'package:flutter/material.dart';
 
-import '../colors.dart';
 import '../profile.dart';
 
 class Payment extends StatefulWidget {

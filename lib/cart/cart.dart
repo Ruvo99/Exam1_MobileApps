@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/models/product_item_cart.dart';
 
@@ -164,8 +162,10 @@ class _CartState extends State<Cart> {
                               child: IconButton(
                                   icon: Icon(Icons.delete),
                                   onPressed: () {
+                                    print('hola');
                                     setState(() {
-                                      widget.productsList.remove(widget.productsList[index]);
+                                      widget.productsList
+                                          .remove(widget.productsList[index]);
                                     });
                                   })),
                         ),

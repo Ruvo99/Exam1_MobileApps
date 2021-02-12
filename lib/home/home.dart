@@ -11,7 +11,6 @@ import 'package:estructura_practica_1/models/product_repository.dart';
 import 'package:estructura_practica_1/payment/payment.dart';
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/home/item_home.dart';
-import 'package:estructura_practica_1/profile.dart';
 
 import 'package:estructura_practica_1/models/product_cart.dart';
 
