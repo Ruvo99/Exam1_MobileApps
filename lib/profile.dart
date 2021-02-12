@@ -1,3 +1,4 @@
+import 'package:estructura_practica_1/sign_in/login.dart';
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/utils/constants.dart';
 
@@ -6,23 +7,15 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(PROFILE_TITLE),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
-          ),
-        ],
-      ),
-      body: Padding(
+    return Drawer(
+      child: Padding(
         padding: EdgeInsets.all(24.0),
         child: Stack(
           children: [
             Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
+                SizedBox(height: 10),
                 Container(
                   height: 150,
                   child: CircleAvatar(
@@ -80,7 +73,13 @@ class Profile extends StatelessWidget {
                   Expanded(
                     child: RaisedButton(
                       child: Text(PROFILE_LOGOUT),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => Login(),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ],
