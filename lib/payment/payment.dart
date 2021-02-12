@@ -1,4 +1,6 @@
+import 'package:estructura_practica_1/home/home.dart';
 import 'package:estructura_practica_1/payment/pay_option.dart';
+import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../profile.dart';
@@ -40,21 +42,24 @@ class _PaymentState extends State<Payment> {
             onTap: _showAlert,
             child: PayOption(
               title: "Tarjeta de Crédito",
-              image: "https://i.imgur.com/XJ0y9qs.png",
+              image:
+                  "https://i.pinimg.com/originals/f9/b8/65/f9b8656657dd39621061fee4a48f088e.png",
             ),
           ),
           GestureDetector(
             onTap: _showAlert,
             child: PayOption(
               title: "Paypal",
-              image: "https://i.imgur.com/fI7Tezv.png",
+              image:
+                  "https://logodownload.org/wp-content/uploads/2014/10/paypal-logo-2.png",
             ),
           ),
           GestureDetector(
             onTap: _showAlert,
             child: PayOption(
               title: "Tarjeta de Regalo",
-              image: "https://i.imgur.com/5MZocC1.png",
+              image:
+                  "https://www.tinpin.com/wp-content/uploads/2019/12/icon_giftcard_square.png",
             ),
           )
         ],
@@ -62,5 +67,61 @@ class _PaymentState extends State<Payment> {
     );
   }
 
-  void _showAlert() {}
+  void _showAlert() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Image.network(
+                'https://img.freepik.com/foto-gratis/arreglo-granos-cafe-tostados-taza-blanca_23-2148441237.jpg?size=626&ext=jpg'),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    Icon(Icons.shopping_bag_outlined),
+                    SizedBox(width: 10),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '!Orden Exitosa!',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
+                        ),
+                        Text('Gracias por tu compra.'),
+                      ],
+                    )
+                  ],
+                ),
+                SizedBox(height: 20),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                          'To orden ha sido registrada, para más información busca en la opción historial de compras en tu perfil.'),
+                    )
+                  ],
+                )
+              ],
+            ),
+            actions: [
+              MaterialButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => Home(title: APP_TITLE),
+                    ),
+                  );
+                  ;
+                },
+                child: Text(
+                  'Aceptar',
+                  style: TextStyle(color: Colors.purple),
+                ),
+              )
+            ],
+          );
+        });
+  }
 }
