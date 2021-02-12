@@ -43,17 +43,18 @@ class _CartState extends State<Cart> {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 20.0),
-        child: Stack(children: [
-          ListView.builder(
-            itemCount: widget.productsList.length,
-            itemBuilder: (BuildContext context, int index) {
-              return GestureDetector(
-                onTap: () {},
-                child: Padding(
-                    padding: const EdgeInsets.only(
-                        left: 20.0, right: 20.0, top: 16.0),
+      body: Column(
+        children: [
+          Expanded(
+            flex: 3,
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: widget.productsList.length,
+              itemBuilder: (BuildContext context, int index) {
+                return GestureDetector(
+                  onTap: () {},
+                  child: Padding(
+                    padding: const EdgeInsets.all(14.0),
                     child: Container(
                       height: 170.0,
                       width: 250.0,
@@ -64,125 +65,201 @@ class _CartState extends State<Cart> {
                           colors: [cuppingOrange, cuppingYellow],
                         ),
                       ),
-                      child: Stack(fit: StackFit.loose, children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10.0, top: 40.0),
-                          child: Image.network(
-                            "${widget.productsList[index].productImage}",
-                            fit: BoxFit.contain,
-                            height: 100,
-                            // width: 50.0,
+                      child: Stack(
+                        fit: StackFit.loose,
+                        children: [
+                          Row(
+                            children: [
+                              Expanded(
+                                flex: 2,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image.network(
+                                        widget.productsList[index].productImage,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 3,
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "${widget.productsList[index].productTitle}",
+                                          style: TextStyle(
+                                              color: cuppingBlue,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 18.0),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "${widget.productsList[index].productPresentation}",
+                                          style: TextStyle(
+                                              color: cuppingWhite,
+                                              fontSize: 14.0),
+                                        ),
+                                      ],
+                                    ),
+                                    Text(
+                                      "${widget.productsList[index].productDescription}",
+                                      style: TextStyle(
+                                          color: cuppingWhite, fontSize: 12.0),
+                                    ),
+                                    Row(
+                                      children: [
+                                        IconButton(
+                                          color: cuppingBlue,
+                                          icon: Icon(Icons.add_circle_outline),
+                                          onPressed: () {
+                                            setState(
+                                              () {
+                                                widget.productsList[index]
+                                                    .productAmount += 1;
+                                              },
+                                            );
+                                          },
+                                        ),
+                                        Text(
+                                          "${widget.productsList[index].productAmount}",
+                                          style: TextStyle(
+                                              color: cuppingBlue,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14.0),
+                                        ),
+                                        IconButton(
+                                          color: cuppingBlue,
+                                          icon:
+                                              Icon(Icons.remove_circle_outline),
+                                          onPressed: () {
+                                            setState(
+                                              () {
+                                                widget.productsList[index]
+                                                    .productAmount = widget
+                                                            .productsList[index]
+                                                            .productAmount ==
+                                                        1
+                                                    ? 1
+                                                    : widget.productsList[index]
+                                                            .productAmount -
+                                                        1;
+                                              },
+                                            );
+                                          },
+                                        ),
+                                        Text(
+                                          "\$${(widget.productsList[index].productPrice * widget.productsList[index].productAmount).toStringAsFixed(2)}",
+                                          style: TextStyle(
+                                              color: cuppingBlue,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 20.0),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      IconButton(
+                                        icon: widget.productsList[index]
+                                                .productLiked
+                                            ? Icon(Icons.favorite)
+                                            : Icon(
+                                                Icons.favorite_border_outlined),
+                                        onPressed: () {
+                                          setState(
+                                            () {
+                                              widget.productsList[index]
+                                                      .productLiked =
+                                                  !widget.productsList[index]
+                                                      .productLiked;
+                                            },
+                                          );
+                                        },
+                                      ),
+                                      IconButton(
+                                        icon: Icon(Icons.delete),
+                                        onPressed: () {
+                                          print('hola');
+                                          setState(
+                                            () {
+                                              widget.productsList.remove(
+                                                  widget.productsList[index]);
+                                            },
+                                          );
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 140.0, top: 15.0),
-                          child: Text(
-                            "${widget.productsList[index].productTitle}",
-                            style: TextStyle(
-                                color: cuppingBlue,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 140.0, top: 45.0),
-                          child: Text(
-                            "${widget.productsList[index].productPresentation}",
-                            style:
-                                TextStyle(color: cuppingWhite, fontSize: 14.0),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                              left: 140.0, top: 65.0, right: 40.0),
-                          child: Text(
-                            "${widget.productsList[index].productDescription}",
-                            style:
-                                TextStyle(color: cuppingWhite, fontSize: 12.0),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 260.0, top: 100.0),
-                          child: Text(
-                            "\$${(widget.productsList[index].productPrice * widget.productsList[index].productAmount).toStringAsFixed(2)}",
-                            style: TextStyle(
-                                color: cuppingBlue,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.0),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 180.0, top: 105.0),
-                          child: Text(
-                            "${widget.productsList[index].productAmount}",
-                            style: TextStyle(
-                                color: cuppingBlue,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14.0),
-                          ),
-                        ),
-                        Container(
-                            margin: EdgeInsets.only(left: 135.0, top: 90.0),
-                            child: IconButton(
-                              color: cuppingBlue,
-                              icon: Icon(Icons.add_circle_outline),
-                              onPressed: () {
-                                setState(() {
-                                  widget.productsList[index].productAmount += 1;
-                                });
-                              },
-                            )),
-                        Container(
-                            margin: EdgeInsets.only(left: 185.0, top: 90.0),
-                            child: IconButton(
-                              color: cuppingBlue,
-                              icon: Icon(Icons.remove_circle_outline),
-                              onPressed: () {
-                                setState(() {
-                                  widget.productsList[index].productAmount = widget.productsList[index].productAmount == 1 ? 1 : widget.productsList[index].productAmount - 1;
-                                });
-                              },
-                            )),
-                        Container(
-                          margin: EdgeInsets.only(left: 299),
-                          width: 180,
-                          decoration: BoxDecoration(),
-                          child: Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: IconButton(
-                                  icon: widget.productsList[index].productLiked
-                                      ? Icon(Icons.favorite)
-                                      : Icon(Icons.favorite_border_outlined),
-                                  onPressed: () {
-                                    setState(() {
-                                      widget.productsList[index].productLiked =
-                                          !widget
-                                              .productsList[index].productLiked;
-                                    });
-                                  })),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 299, top: 65.0),
-                          width: 180,
-                          decoration: BoxDecoration(),
-                          child: Padding(
-                              padding: const EdgeInsets.all(24.0),
-                              child: IconButton(
-                                  icon: Icon(Icons.delete),
-                                  onPressed: () {
-                                    print('hola');
-                                    setState(() {
-                                      widget.productsList
-                                          .remove(widget.productsList[index]);
-                                    });
-                                  })),
-                        ),
-                      ]),
-                    )),
-              );
-            },
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
           ),
-        ]),
+          Expanded(
+            flex: 1,
+            child: Row(
+              children: [
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: 'Total',
+                        style: TextStyle(
+                          color: cuppingBlack,
+                          fontSize: 24.0,
+                        ),
+                      ),
+                      TextSpan(
+                        text: '\n\$',
+                        style: TextStyle(color: cuppingBlack, fontSize: 24.0),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: TextButton(
+              onPressed: () {},
+              style: TextButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0)),
+                backgroundColor: cuppingGrey,
+              ),
+              child: Text(
+                'PAGAR',
+                style: TextStyle(color: cuppingBlack),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
