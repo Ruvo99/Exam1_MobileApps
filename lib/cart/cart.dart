@@ -104,7 +104,7 @@ class _CartState extends State<Cart> {
                         Container(
                           margin: EdgeInsets.only(left: 260.0, top: 100.0),
                           child: Text(
-                            "\$${widget.productsList[index].productPrice}",
+                            "\$${(widget.productsList[index].productPrice * widget.productsList[index].productAmount).toStringAsFixed(2)}",
                             style: TextStyle(
                                 color: cuppingBlue,
                                 fontWeight: FontWeight.bold,
@@ -126,14 +126,24 @@ class _CartState extends State<Cart> {
                             child: IconButton(
                               color: cuppingBlue,
                               icon: Icon(Icons.add_circle_outline),
-                              onPressed: () {},
+                              onPressed: () {
+                                print(widget.productsList[index].productAmount);
+                                setState(() {
+                                  widget.productsList[index].productAmount += 1;
+                                });
+                                print(widget.productsList[index].productAmount);
+                              },
                             )),
                         Container(
                             margin: EdgeInsets.only(left: 185.0, top: 90.0),
                             child: IconButton(
                               color: cuppingBlue,
                               icon: Icon(Icons.remove_circle_outline),
-                              onPressed: () {},
+                              onPressed: () {
+                                setState(() {
+                                  widget.productsList[index].productAmount = widget.productsList[index].productAmount == 1 ? 1 : widget.productsList[index].productAmount - 1;
+                                });
+                              },
                             )),
                         Container(
                           margin: EdgeInsets.only(left: 299),
