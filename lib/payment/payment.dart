@@ -28,7 +28,6 @@ class _PaymentState extends State<Payment> {
             icon: Icon(Icons.person),
             onPressed: () {
               Navigator.of(context).push(
-                // TODO: Eliminar este boton y adaptar todo el contenido de la pagina de perfil en un Drawer aqui en la pantalla Home
                 MaterialPageRoute(builder: (_) => Profile()),
               );
             },

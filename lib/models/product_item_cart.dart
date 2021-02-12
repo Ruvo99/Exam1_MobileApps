@@ -1,6 +1,3 @@
-import 'package:estructura_practica_1/models/product_desserts.dart';
-import 'package:estructura_practica_1/models/product_grains.dart';
-import 'package:estructura_practica_1/models/product_hot_drinks.dart';
 import 'package:flutter/foundation.dart';
 import 'package:estructura_practica_1/models/product_repository.dart';
 

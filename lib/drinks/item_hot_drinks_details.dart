@@ -2,6 +2,7 @@ import 'package:estructura_practica_1/models/product_cart.dart';
 import 'package:estructura_practica_1/colors.dart';
 import 'package:estructura_practica_1/models/product_hot_drinks.dart';
 import 'package:estructura_practica_1/models/product_item_cart.dart';
+import 'package:estructura_practica_1/payment/payment.dart';
 import 'package:flutter/material.dart';
 
 class ItemHotDrinksDetails extends StatefulWidget {
@@ -288,8 +289,8 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                           backgroundColor: cuppingGrey,
                         ),
                         onPressed: () {
-                          // Navigator.of(context).push(MaterialPageRoute(
-                          //     builder: (context) => Home(title: APP_TITLE)));
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (_) => Payment()));
                         },
                         child: Text(
                           "COMPRAR AHORA",
