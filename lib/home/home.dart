@@ -8,6 +8,7 @@ import 'package:estructura_practica_1/models/product_grains.dart';
 import 'package:estructura_practica_1/models/product_hot_drinks.dart';
 import 'package:estructura_practica_1/models/product_item_cart.dart';
 import 'package:estructura_practica_1/models/product_repository.dart';
+import 'package:estructura_practica_1/payment/payment.dart';
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/home/item_home.dart';
 import 'package:estructura_practica_1/profile.dart';
@@ -44,8 +45,7 @@ class _HomeState extends State<Home> {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) =>
-                      Cart(productsList: cart.products),
+                  builder: (context) => Cart(productsList: cart.products),
                 ),
               );
             },
@@ -55,7 +55,7 @@ class _HomeState extends State<Home> {
             onPressed: () {
               Navigator.of(context).push(
                 // TODO: Eliminar este boton y adaptar todo el contenido de la pagina de perfil en un Drawer aqui en la pantalla Home
-                MaterialPageRoute(builder: (_) => Profile()),
+                MaterialPageRoute(builder: (_) => Payment()),
               );
             },
           ),
