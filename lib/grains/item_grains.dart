@@ -37,7 +37,7 @@ class _ItemGrainsState extends State<ItemGrains> {
             child: Padding(
               padding: const EdgeInsets.all(24.0),
               child: Text(
-                "Café",
+                "Granos",
                 style: Theme.of(context)
                     .textTheme
                     .headline5

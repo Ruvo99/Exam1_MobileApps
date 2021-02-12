@@ -17,7 +17,7 @@ class ItemDesserts extends StatefulWidget {
 class _ItemDessertsState extends State<ItemDesserts> {
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       height: 220,
       child: Stack(
         children: [
@@ -37,7 +37,7 @@ class _ItemDessertsState extends State<ItemDesserts> {
             child: Padding(
               padding: const EdgeInsets.all(24.0),
               child: Text(
-                "Café",
+                "Postre",
                 style: Theme.of(context)
                     .textTheme
                     .headline5
