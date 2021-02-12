@@ -13,46 +13,49 @@ class ProductRepository {
     if (prodType == ProductType.POSTRES) {
       return <ProductDessert>[
         ProductDessert(
-          productTitle: "Lavazza",
-          productDescription: "Endulzado con aromas florales.",
+          productTitle: "Pastel de Chocolate",
+          productDescription:
+              "Delicioso pastel de chocolate con betún sabor chocolate ",
           productImage:
-              "https://www.lavazza.it/content/dam/lavazza/products/caffe/macinato/moka/qualitaoro/new_render/tin_250_en/Tin-oro-en-250-thumb.png",
+              "https://lh3.googleusercontent.com/proxy/azLpX9gvywvQIi_6lSoNQ0_CMxHfAzxgqK1H9Qkq_PodorLQD9RyHtFXUTgi0hnrw0U_H6yAF0MuZ33K03auzf80lcF2LiDcdiBJtuccsWyq16Pgk4DFZKZeyxRROV-reY3kI-YSSOFLFN1hu50kT7SKWYIKp0escw",
           productStyle: ProductStyle.REBANADA,
           productAmount: 0,
           productLiked: false,
         ),
         ProductDessert(
-          productTitle: "Lavazza",
-          productDescription: "Endulzado con aromas florales.",
+          productTitle: "Pastel de tres leches",
+          productDescription: "Delicioso pastel tradicional de tres leches ",
           productImage:
-              "https://www.lavazza.it/content/dam/lavazza/products/caffe/macinato/moka/qualitaoro/new_render/tin_250_en/Tin-oro-en-250-thumb.png",
+              "https://www.casadelcafe.com.ni/wp-content/uploads/2018/02/tres-leches-1.png",
           productStyle: ProductStyle.REBANADA,
           productAmount: 0,
           productLiked: false,
         ),
         ProductDessert(
-          productTitle: "Lavazza",
-          productDescription: "Endulzado con aromas florales.",
+          productTitle: "Tiramisú",
+          productDescription:
+              "El tiramisú (del italiano tiramisù) es un pastel frío que se monta en capas.",
           productImage:
-              "https://www.lavazza.it/content/dam/lavazza/products/caffe/macinato/moka/qualitaoro/new_render/tin_250_en/Tin-oro-en-250-thumb.png",
+              "https://freepikpsd.com/wp-content/uploads/2019/10/tiramisu-png-1.png",
           productStyle: ProductStyle.REBANADA,
           productAmount: 0,
           productLiked: false,
         ),
         ProductDessert(
-          productTitle: "Lavazza",
-          productDescription: "Endulzado con aromas florales.",
+          productTitle: "Flan",
+          productDescription:
+              "El flan es un delicioso postre que se prepara con huevos enteros, leche y azúcar.",
           productImage:
-              "https://www.lavazza.it/content/dam/lavazza/products/caffe/macinato/moka/qualitaoro/new_render/tin_250_en/Tin-oro-en-250-thumb.png",
+              "https://static.wixstatic.com/media/01d7e2_fcd8abc10d94492692239832c862d94d~mv2.png/v1/fill/w_560,h_320,al_c,q_85,usm_0.66_1.00_0.01/Flan.webp",
           productStyle: ProductStyle.REBANADA,
           productAmount: 0,
           productLiked: false,
         ),
         ProductDessert(
-          productTitle: "Lavazza",
-          productDescription: "Endulzado con aromas florales.",
+          productTitle: "Pastel de fresa",
+          productDescription: "Pastel sabor fresa endulzado con splenda.",
           productImage:
-              "https://www.lavazza.it/content/dam/lavazza/products/caffe/macinato/moka/qualitaoro/new_render/tin_250_en/Tin-oro-en-250-thumb.png",
+              "https://www.lazarza.com.mx/admin/img/productos/interna/interna_1576265055.png",
           productStyle: ProductStyle.REBANADA,
           productAmount: 0,
           productLiked: false,
