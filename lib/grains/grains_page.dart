@@ -1,3 +1,4 @@
+import 'package:estructura_practica_1/cart/cart.dart';
 import 'package:estructura_practica_1/grains/item_grains_details.dart';
 import 'package:estructura_practica_1/models/product_cart.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,11 @@ class _GrainsPageState extends State<GrainsPage> {
           IconButton(
             icon: Icon(Icons.shopping_cart),
             onPressed: () {
-              print(widget.cart.products);
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => Cart(productsList: widget.cart.products),
+                ),
+              );
             },
           ),
           IconButton(

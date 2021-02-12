@@ -1,3 +1,4 @@
+import 'package:estructura_practica_1/cart/cart.dart';
 import 'package:estructura_practica_1/models/product_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/drinks/item_hot_drinks.dart';
@@ -29,7 +30,13 @@ class _HotDrinksPageState extends State<HotDrinksPage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => Cart(productsList: widget.cart.products),
+                ),
+              );
+            },
           ),
           IconButton(
             icon: Icon(Icons.person),

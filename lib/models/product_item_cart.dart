@@ -1,3 +1,6 @@
+import 'package:estructura_practica_1/models/product_desserts.dart';
+import 'package:estructura_practica_1/models/product_grains.dart';
+import 'package:estructura_practica_1/models/product_hot_drinks.dart';
 import 'package:flutter/foundation.dart';
 import 'package:estructura_practica_1/models/product_repository.dart';
 
@@ -7,6 +10,9 @@ class ProductItemCart {
   int productAmount;
   double productPrice;
   final ProductType typeOfProduct;
+  String productImage;
+  String productPresentation;
+  String productDescription;
 
   ProductItemCart({
     this.typeOfProduct,
@@ -14,5 +20,8 @@ class ProductItemCart {
     @required this.productTitle,
     @required this.productAmount,
     @required this.productPrice,
+    @required this.productImage,
+    @required this.productPresentation,
+    @required this.productDescription,
   });
 }

@@ -94,21 +94,21 @@ class _ItemDessertsDetailsState extends State<ItemDessertsDetails> {
                     "${dessert.productTitle}",
                     style: TextStyle(fontSize: 24.0),
                   ),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 16.0,
-            ),
-            Row(
-              children: [
-                Container(
-                  child: Flexible(
-                    child: Text(
-                      "\$${style == 1 ? (dessert.productPrice * 0.1).toStringAsFixed(2) : dessert.productPrice}",
-                      style: TextStyle(fontSize: 28.0),
+                ],
+              ),
+              SizedBox(
+                height: 16.0,
+              ),
+              Row(
+                children: [
+                  Container(
+                    child: Flexible(
+                      child: Text(
+                        "\$${style == 1 ? (dessert.productPrice * 0.1).toStringAsFixed(2) : dessert.productPrice}",
+                        style: TextStyle(fontSize: 28.0),
+                      ),
                     ),
-                  )
+                  ),
                 ],
               ),
               SizedBox(
@@ -216,13 +216,15 @@ class _ItemDessertsDetailsState extends State<ItemDessertsDetails> {
                           print(widget.cart.products);
                           widget.cart.products.add(
                             ProductItemCart(
-                              productLiked: dessert.liked,
-                              productTitle: dessert.productTitle,
-                              productAmount: 1,
-                              productPrice: style == 1
-                                  ? (dessert.productPrice * 0.1)
-                                  : dessert.productPrice,
-                            ),
+                                productLiked: dessert.liked,
+                                productTitle: dessert.productTitle,
+                                productAmount: 1,
+                                productPrice: style == 1
+                                    ? (dessert.productPrice * 0.1)
+                                    : dessert.productPrice,
+                                productImage: dessert.productImage,
+                                productPresentation: style == 1 ? 'Rebanada' : 'Completo' ,
+                                productDescription: dessert.productDescription)
                           );
                           print(widget.cart.products);
                           ScaffoldMessenger.of(context).showSnackBar(

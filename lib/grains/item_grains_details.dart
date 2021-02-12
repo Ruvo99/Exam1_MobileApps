@@ -220,8 +220,13 @@ class _ItemGrainsDetailsState extends State<ItemGrainsDetails> {
                               productAmount: 1,
                               productPrice: amount == 1
                                   ? (grains.productPrice * 0.25)
-                                      .toStringAsFixed(2)
-                                  : grains.productPrice));
+                                      
+                                  : grains.productPrice,
+                              productImage: grains.productImage,
+                              productPresentation: amount == 1
+                                  ? '250 g'
+                                  : '1 k',
+                              productDescription: grains.productDescription));
                           print(widget.cart.products);
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(

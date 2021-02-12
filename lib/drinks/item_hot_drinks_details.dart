@@ -253,7 +253,13 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                                   : cupSize == 2
                                       ? (hotDrink.productPrice * 0.7)
                                       : (hotDrink.productPrice * 0.5),
-                            ),
+                              productImage: hotDrink.productImage,
+                              productPresentation: cupSize == 3
+                                  ? "Grande"
+                                  : cupSize == 2
+                                      ? "Mediano"
+                                      : "Chico",
+                              productDescription: hotDrink.productDescription), 
                           );
                           print(widget.cart.products);
                           ScaffoldMessenger.of(context).showSnackBar(

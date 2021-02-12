@@ -1,3 +1,4 @@
+import 'package:estructura_practica_1/cart/cart.dart';
 import 'package:estructura_practica_1/colors.dart';
 import 'package:estructura_practica_1/desserts/desserts_page.dart';
 import 'package:estructura_practica_1/drinks/hot_drinks_page.dart';
@@ -41,7 +42,12 @@ class _HomeState extends State<Home> {
           IconButton(
             icon: Icon(Icons.shopping_cart),
             onPressed: () {
-              print(cart.products);
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) =>
+                      Cart(productsList: cart.products),
+                ),
+              );
             },
           ),
           IconButton(
@@ -95,18 +101,7 @@ class _HomeState extends State<Home> {
       MaterialPageRoute(
         builder: (context) => HotDrinksPage(drinksList: drinksList, cart: cart),
       ),
-    )
-        //     .then((selection) {
-        //   if (selection != null) {
-        //     print(selection);
-        //     cart.drinks += selection;
-        //     print(cart.drinks);
-        //   } else {
-        //     print("no hay");
-        //   }
-        //   // print(resultado.productTitle);
-        // });
-        ;
+    );
   }
 
   void _openGrainsPage() {
@@ -115,14 +110,6 @@ class _HomeState extends State<Home> {
         builder: (context) => GrainsPage(grainsList: grainsList, cart: cart),
       ),
     );
-    //     .then((selection) {
-    //   if (selection != null) {
-    //     cart.grains += selection;
-    //     print(cart.grains);
-    //   } else {
-    //     print('You have not selected anything yet');
-    //   }
-    // });
   }
 
   void _openDessertPage() {
