@@ -1,3 +1,4 @@
+import 'package:estructura_practica_1/payment/payment.dart';
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/models/product_item_cart.dart';
 
@@ -36,7 +37,6 @@ class _CartState extends State<Cart> {
             icon: Icon(Icons.person),
             onPressed: () {
               Navigator.of(context).push(
-                // TODO: Eliminar este boton y adaptar todo el contenido de la pagina de perfil en un Drawer aqui en la pantalla Home
                 MaterialPageRoute(builder: (_) => Profile()),
               );
             },
@@ -126,6 +126,9 @@ class _CartState extends State<Cart> {
                                               () {
                                                 widget.productsList[index]
                                                     .productAmount += 1;
+                                                _total += widget
+                                                    .productsList[index]
+                                                    .productPrice;
                                               },
                                             );
                                           },
@@ -153,6 +156,9 @@ class _CartState extends State<Cart> {
                                                     : widget.productsList[index]
                                                             .productAmount -
                                                         1;
+                                                _total -= widget
+                                                    .productsList[index]
+                                                    .productPrice;
                                               },
                                             );
                                           },
@@ -200,6 +206,11 @@ class _CartState extends State<Cart> {
                                           print('hola');
                                           setState(
                                             () {
+                                              _total -= (widget
+                                                      .productsList[index]
+                                                      .productPrice *
+                                                  widget.productsList[index]
+                                                      .productAmount);
                                               widget.productsList.remove(
                                                   widget.productsList[index]);
                                             },
@@ -222,51 +233,66 @@ class _CartState extends State<Cart> {
           ),
           Expanded(
             flex: 1,
-            child: Row(
-              children: [
-                RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: 'Total',
-                        style: TextStyle(
-                          color: cuppingBlack,
-                          fontSize: 24.0,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: 'Total',
+                          style: TextStyle(
+                            color: cuppingBlack,
+                            fontSize: 24.0,
+                          ),
                         ),
-                      ),
-                      TextSpan(
-                        text: '\n\$',
-                        style: TextStyle(color: cuppingBlack, fontSize: 24.0),
-                      )
-                    ],
+                        TextSpan(
+                          text: '\n\$${_total.toStringAsFixed(2)}',
+                          style: TextStyle(color: cuppingBlack, fontSize: 24.0),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-          Expanded(
-            child: TextButton(
-              onPressed: () {},
-              style: TextButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
-                backgroundColor: cuppingGrey,
+          Row(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 90.0,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (_) => Payment()));
+                    },
+                    style: TextButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
+                      backgroundColor: cuppingGrey,
+                    ),
+                    child: Text(
+                      'PAGAR',
+                      style: TextStyle(color: cuppingBlack),
+                    ),
+                  ),
+                ),
               ),
-              child: Text(
-                'PAGAR',
-                style: TextStyle(color: cuppingBlack),
-              ),
-            ),
+            ],
           ),
         ],
       ),
     );
   }
 
-  void _priceUpdate(double newItemPrice) {
-    setState(() {
-      _total += newItemPrice;
-    });
-  }
+  // void _priceUpdate(double newItemPrice) {
+  //   setState(() {
+  //     _total += newItemPrice;
+  //   });
+  // }
 }

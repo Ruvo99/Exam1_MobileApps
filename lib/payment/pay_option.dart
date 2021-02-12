@@ -57,7 +57,7 @@ class PayOption extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 25),
+                        SizedBox(height: 20),
                         Spacer(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,

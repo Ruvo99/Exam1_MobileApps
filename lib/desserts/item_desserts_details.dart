@@ -1,6 +1,7 @@
 import 'package:estructura_practica_1/models/product_cart.dart';
 import 'package:estructura_practica_1/models/product_desserts.dart';
 import 'package:estructura_practica_1/models/product_item_cart.dart';
+import 'package:estructura_practica_1/payment/payment.dart';
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/colors.dart';
 
@@ -254,8 +255,8 @@ class _ItemDessertsDetailsState extends State<ItemDessertsDetails> {
                           backgroundColor: cuppingGrey,
                         ),
                         onPressed: () {
-                          // Navigator.of(context).push(MaterialPageRoute(
-                          //     builder: (context) => Home(title: APP_TITLE)));
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (_) => Payment()));
                         },
                         child: Text(
                           "COMPRAR AHORA",
