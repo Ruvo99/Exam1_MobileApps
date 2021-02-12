@@ -6,9 +6,11 @@ import 'package:estructura_practica_1/colors.dart';
 
 class ItemDessertsDetails extends StatefulWidget {
   ProductCart cart;
+  ProductDessert dessert;
   ItemDessertsDetails({
     Key key,
     @required this.cart,
+    @required this.dessert,
   }) : super(key: key);
 
   @override
@@ -20,12 +22,11 @@ class _ItemDessertsDetailsState extends State<ItemDessertsDetails> {
 
   @override
   Widget build(BuildContext context) {
-    ProductDessert dessert = ModalRoute.of(context).settings.arguments;
     // ProductCart cart = new ProductCart();
     // cart.drinks = [];
     return Scaffold(
       appBar: AppBar(
-        title: Text("${dessert.productTitle}"),
+        title: Text("${widget.dessert.productTitle}"),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -58,7 +59,7 @@ class _ItemDessertsDetailsState extends State<ItemDessertsDetails> {
                     top: 40.0,
                     left: 100.0,
                     child: Image.network(
-                      "${dessert.productImage}",
+                      "${widget.dessert.productImage}",
                       fit: BoxFit.contain,
                       height: 200,
                       width: 200,
@@ -72,12 +73,12 @@ class _ItemDessertsDetailsState extends State<ItemDessertsDetails> {
                       width: 180,
                       decoration: BoxDecoration(),
                       child: IconButton(
-                          icon: dessert.liked
+                          icon: widget.dessert.liked
                               ? Icon(Icons.favorite)
                               : Icon(Icons.favorite_border_outlined),
                           onPressed: () {
                             setState(() {
-                              dessert.liked = !dessert.liked;
+                              widget.dessert.liked = !widget.dessert.liked;
                             });
                           }),
                     ),
@@ -91,7 +92,7 @@ class _ItemDessertsDetailsState extends State<ItemDessertsDetails> {
               Row(
                 children: [
                   Text(
-                    "${dessert.productTitle}",
+                    "${widget.dessert.productTitle}",
                     style: TextStyle(fontSize: 24.0),
                   ),
                 ],
@@ -104,11 +105,11 @@ class _ItemDessertsDetailsState extends State<ItemDessertsDetails> {
                   Container(
                     child: Flexible(
                       child: Text(
-                        "\$${style == 1 ? (dessert.productPrice * 0.1).toStringAsFixed(2) : dessert.productPrice}",
-                        style: TextStyle(fontSize: 28.0),
+                        "${widget.dessert.productDescription}",
+                        style: TextStyle(fontSize: 20.0),
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
               SizedBox(
@@ -134,7 +135,7 @@ class _ItemDessertsDetailsState extends State<ItemDessertsDetails> {
                   Container(
                     child: Flexible(
                       child: Text(
-                        "\$${style == 1 ? (dessert.productPrice * 0.1).toStringAsFixed(2) : dessert.productPrice}",
+                        "\$${style == 1 ? (widget.dessert.productPrice * 0.1).toStringAsFixed(2) : widget.dessert.productPrice}",
                         style: TextStyle(fontSize: 28.0),
                       ),
                     ),
@@ -214,23 +215,23 @@ class _ItemDessertsDetailsState extends State<ItemDessertsDetails> {
                         ),
                         onPressed: () {
                           print(widget.cart.products);
-                          widget.cart.products.add(
-                            ProductItemCart(
-                                productLiked: dessert.liked,
-                                productTitle: dessert.productTitle,
-                                productAmount: 1,
-                                productPrice: style == 1
-                                    ? (dessert.productPrice * 0.1)
-                                    : dessert.productPrice,
-                                productImage: dessert.productImage,
-                                productPresentation: style == 1 ? 'Rebanada' : 'Completo' ,
-                                productDescription: dessert.productDescription)
-                          );
+                          widget.cart.products.add(ProductItemCart(
+                              productLiked: widget.dessert.liked,
+                              productTitle: widget.dessert.productTitle,
+                              productAmount: 1,
+                              productPrice: style == 1
+                                  ? (widget.dessert.productPrice * 0.1)
+                                  : widget.dessert.productPrice,
+                              productImage: widget.dessert.productImage,
+                              productPresentation:
+                                  style == 1 ? 'Rebanada' : 'Completo',
+                              productDescription:
+                                  widget.dessert.productDescription));
                           print(widget.cart.products);
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                  '${dessert.productTitle} agregado al carrito'),
+                                  '${widget.dessert.productTitle} agregado al carrito'),
                               backgroundColor: cuppingBlue,
                             ),
                           );

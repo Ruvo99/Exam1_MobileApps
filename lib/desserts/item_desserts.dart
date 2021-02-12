@@ -4,7 +4,7 @@ import 'package:estructura_practica_1/models/product_desserts.dart';
 import '../colors.dart';
 
 class ItemDesserts extends StatefulWidget {
-  final ProductDessert dessert;
+  ProductDessert dessert;
   ItemDesserts({
     Key key,
     @required this.dessert,

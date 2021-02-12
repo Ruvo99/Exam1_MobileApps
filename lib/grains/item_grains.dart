@@ -4,7 +4,7 @@ import 'package:estructura_practica_1/models/product_grains.dart';
 import '../colors.dart';
 
 class ItemGrains extends StatefulWidget {
-  final ProductGrains grain;
+  ProductGrains grain;
   ItemGrains({
     Key key,
     @required this.grain,

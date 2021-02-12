@@ -6,9 +6,11 @@ import 'package:estructura_practica_1/colors.dart';
 
 class ItemGrainsDetails extends StatefulWidget {
   ProductCart cart;
+  ProductGrains grain;
   ItemGrainsDetails({
     Key key,
     @required this.cart,
+    @required this.grain,
   }) : super(key: key);
 
   @override
@@ -19,10 +21,9 @@ class _ItemGrainsDetailsState extends State<ItemGrainsDetails> {
   double amount = 2;
   @override
   Widget build(BuildContext context) {
-    ProductGrains grains = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
-        title: Text("${grains.productTitle}"),
+        title: Text("${widget.grain.productTitle}"),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -55,7 +56,7 @@ class _ItemGrainsDetailsState extends State<ItemGrainsDetails> {
                     top: 40.0,
                     left: 100.0,
                     child: Image.network(
-                      "${grains.productImage}",
+                      "${widget.grain.productImage}",
                       fit: BoxFit.contain,
                       height: 200,
                       width: 200,
@@ -69,13 +70,13 @@ class _ItemGrainsDetailsState extends State<ItemGrainsDetails> {
                       width: 180,
                       decoration: BoxDecoration(),
                       child: IconButton(
-                        icon: grains.liked
+                        icon: widget.grain.liked
                             ? Icon(Icons.favorite)
                             : Icon(Icons.favorite_border_outlined),
                         onPressed: () {
                           setState(
                             () {
-                              grains.liked = !grains.liked;
+                              widget.grain.liked = !widget.grain.liked;
                             },
                           );
                         },
@@ -91,7 +92,7 @@ class _ItemGrainsDetailsState extends State<ItemGrainsDetails> {
               Row(
                 children: [
                   Text(
-                    "${grains.productTitle}",
+                    "${widget.grain.productTitle}",
                     style: TextStyle(fontSize: 24.0),
                   ),
                 ],
@@ -104,7 +105,7 @@ class _ItemGrainsDetailsState extends State<ItemGrainsDetails> {
                   Container(
                     child: Flexible(
                       child: Text(
-                        "${grains.productDescription}",
+                        "${widget.grain.productDescription}",
                         style: TextStyle(fontSize: 20.0),
                       ),
                     ),
@@ -134,7 +135,7 @@ class _ItemGrainsDetailsState extends State<ItemGrainsDetails> {
                   Container(
                     child: Flexible(
                       child: Text(
-                        "\$${amount == 1 ? (grains.productPrice * 0.25).toStringAsFixed(2) : grains.productPrice}",
+                        "\$${amount == 1 ? (widget.grain.productPrice * 0.25).toStringAsFixed(2) : widget.grain.productPrice}",
                         style: TextStyle(fontSize: 28.0),
                       ),
                     ),
@@ -215,23 +216,22 @@ class _ItemGrainsDetailsState extends State<ItemGrainsDetails> {
                         onPressed: () {
                           print(widget.cart.products);
                           widget.cart.products.add(ProductItemCart(
-                              productLiked: grains.liked,
-                              productTitle: grains.productTitle,
+                              productLiked: widget.grain.liked,
+                              productTitle: widget.grain.productTitle,
                               productAmount: 1,
                               productPrice: amount == 1
-                                  ? (grains.productPrice * 0.25)
-                                      
-                                  : grains.productPrice,
-                              productImage: grains.productImage,
-                              productPresentation: amount == 1
-                                  ? '250 g'
-                                  : '1 k',
-                              productDescription: grains.productDescription));
+                                  ? (widget.grain.productPrice * 0.25)
+                                  : widget.grain.productPrice,
+                              productImage: widget.grain.productImage,
+                              productPresentation:
+                                  amount == 1 ? '250 g' : '1 k',
+                              productDescription:
+                                  widget.grain.productDescription));
                           print(widget.cart.products);
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                  '${grains.productTitle} agregado al carrito'),
+                                  '${widget.grain.productTitle} agregado al carrito'),
                               backgroundColor: cuppingBlue,
                             ),
                           );

@@ -8,7 +8,7 @@ import '../profile.dart';
 import 'item_hot_drinks_details.dart';
 
 class HotDrinksPage extends StatefulWidget {
-  final List<ProductHotDrinks> drinksList;
+  List<ProductHotDrinks> drinksList;
   ProductCart cart;
   HotDrinksPage({
     Key key,
@@ -33,7 +33,8 @@ class _HotDrinksPageState extends State<HotDrinksPage> {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => Cart(productsList: widget.cart.products),
+                  builder: (context) =>
+                      Cart(productsList: widget.cart.products),
                 ),
               );
             },
@@ -54,10 +55,14 @@ class _HotDrinksPageState extends State<HotDrinksPage> {
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => ItemHotDrinksDetails(cart: widget.cart),
-                settings: RouteSettings(arguments: widget.drinksList[index]),
-              ));
+              Navigator.of(context)
+                  .push(MaterialPageRoute(
+                builder: (context) => ItemHotDrinksDetails(
+                    cart: widget.cart, drink: widget.drinksList[index]),
+              ))
+                  .then((response) {
+                setState(() {});
+              });
             },
             child: ItemHotDrinks(
               drink: widget.drinksList[index],

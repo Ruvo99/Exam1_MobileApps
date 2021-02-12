@@ -7,7 +7,7 @@ import 'package:estructura_practica_1/models/product_grains.dart';
 import '../profile.dart';
 
 class GrainsPage extends StatefulWidget {
-  final List<ProductGrains> grainsList;
+  List<ProductGrains> grainsList;
   ProductCart cart;
   GrainsPage({
     Key key,
@@ -32,7 +32,8 @@ class _GrainsPageState extends State<GrainsPage> {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => Cart(productsList: widget.cart.products),
+                  builder: (context) =>
+                      Cart(productsList: widget.cart.products),
                 ),
               );
             },
@@ -55,12 +56,16 @@ class _GrainsPageState extends State<GrainsPage> {
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {
-              Navigator.of(context).push(
+              Navigator.of(context)
+                  .push(
                 MaterialPageRoute(
-                  builder: (context) => ItemGrainsDetails(cart: widget.cart),
-                  settings: RouteSettings(arguments: widget.grainsList[index]),
+                  builder: (context) => ItemGrainsDetails(
+                      cart: widget.cart, grain: widget.grainsList[index]),
                 ),
-              );
+              )
+                  .then((response) {
+                setState(() {});
+              });
             },
             child: ItemGrains(
               grain: widget.grainsList[index],

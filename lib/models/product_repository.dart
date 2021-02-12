@@ -17,7 +17,7 @@ class ProductRepository {
           productDescription:
               "Delicioso pastel de chocolate con betún sabor chocolate ",
           productImage:
-              "https://lh3.googleusercontent.com/proxy/azLpX9gvywvQIi_6lSoNQ0_CMxHfAzxgqK1H9Qkq_PodorLQD9RyHtFXUTgi0hnrw0U_H6yAF0MuZ33K03auzf80lcF2LiDcdiBJtuccsWyq16Pgk4DFZKZeyxRROV-reY3kI-YSSOFLFN1hu50kT7SKWYIKp0escw",
+              "https://i1.wp.com/www.pastelesdlulu.com/wp-content/uploads/2013/10/pastelchocolate.png?fit=616%2C364&ssl=1",
           productStyle: ProductStyle.REBANADA,
           productAmount: 0,
           productLiked: false,

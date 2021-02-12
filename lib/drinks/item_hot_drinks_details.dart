@@ -6,10 +6,9 @@ import 'package:flutter/material.dart';
 
 class ItemHotDrinksDetails extends StatefulWidget {
   ProductCart cart;
-  ItemHotDrinksDetails({
-    Key key,
-    @required this.cart,
-  }) : super(key: key);
+  ProductHotDrinks drink;
+  ItemHotDrinksDetails({Key key, @required this.cart, @required this.drink})
+      : super(key: key);
 
   @override
   _ItemHotDrinksDetailsState createState() => _ItemHotDrinksDetailsState();
@@ -20,12 +19,12 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
 
   @override
   Widget build(BuildContext context) {
-    ProductHotDrinks hotDrink = ModalRoute.of(context).settings.arguments;
+    //ProductHotDrinks widget.drink = ModalRoute.of(context).settings.arguments;
     // ProductCart cart = new ProductCart();
     // cart.drinks = [];
     return Scaffold(
       appBar: AppBar(
-        title: Text("${hotDrink.productTitle}"),
+        title: Text("${widget.drink.productTitle}"),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -58,7 +57,7 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                     top: 40.0,
                     left: 100.0,
                     child: Image.network(
-                      "${hotDrink.productImage}",
+                      "${widget.drink.productImage}",
                       fit: BoxFit.contain,
                       height: 200,
                       width: 200,
@@ -72,13 +71,13 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                       width: 180,
                       decoration: BoxDecoration(),
                       child: IconButton(
-                        icon: hotDrink.liked
+                        icon: widget.drink.liked
                             ? Icon(Icons.favorite)
                             : Icon(Icons.favorite_border_outlined),
                         onPressed: () {
                           setState(
                             () {
-                              hotDrink.liked = !hotDrink.liked;
+                              widget.drink.liked = !widget.drink.liked;
                             },
                           );
                         },
@@ -94,7 +93,7 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
               Row(
                 children: [
                   Text(
-                    "${hotDrink.productTitle}",
+                    "${widget.drink.productTitle}",
                     style: TextStyle(fontSize: 24.0),
                   ),
                 ],
@@ -107,7 +106,7 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                   Container(
                     child: Flexible(
                       child: Text(
-                        "${hotDrink.productDescription}",
+                        "${widget.drink.productDescription}",
                         style: TextStyle(fontSize: 20.0),
                       ),
                     ),
@@ -137,7 +136,7 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                   Container(
                     child: Flexible(
                       child: Text(
-                        "\$${cupSize == 3 ? hotDrink.productPrice : cupSize == 2 ? (hotDrink.productPrice * 0.7).toStringAsFixed(2) : (hotDrink.productPrice * 0.5).toStringAsFixed(2)}",
+                        "\$${cupSize == 3 ? widget.drink.productPrice : cupSize == 2 ? (widget.drink.productPrice * 0.7).toStringAsFixed(2) : (widget.drink.productPrice * 0.5).toStringAsFixed(2)}",
                         style: TextStyle(fontSize: 28.0),
                       ),
                     ),
@@ -245,27 +244,28 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                           print(widget.cart.products);
                           widget.cart.products.add(
                             ProductItemCart(
-                              productLiked: hotDrink.liked,
-                              productTitle: hotDrink.productTitle,
-                              productAmount: 1,
-                              productPrice: cupSize == 3
-                                  ? hotDrink.productPrice
-                                  : cupSize == 2
-                                      ? (hotDrink.productPrice * 0.7)
-                                      : (hotDrink.productPrice * 0.5),
-                              productImage: hotDrink.productImage,
-                              productPresentation: cupSize == 3
-                                  ? "Grande"
-                                  : cupSize == 2
-                                      ? "Mediano"
-                                      : "Chico",
-                              productDescription: hotDrink.productDescription), 
+                                productLiked: widget.drink.liked,
+                                productTitle: widget.drink.productTitle,
+                                productAmount: 1,
+                                productPrice: cupSize == 3
+                                    ? widget.drink.productPrice
+                                    : cupSize == 2
+                                        ? (widget.drink.productPrice * 0.7)
+                                        : (widget.drink.productPrice * 0.5),
+                                productImage: widget.drink.productImage,
+                                productPresentation: cupSize == 3
+                                    ? "Grande"
+                                    : cupSize == 2
+                                        ? "Mediano"
+                                        : "Chico",
+                                productDescription:
+                                    widget.drink.productDescription),
                           );
                           print(widget.cart.products);
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                  '${hotDrink.productTitle} agregado al carrito'),
+                                  '${widget.drink.productTitle} agregado al carrito'),
                               backgroundColor: cuppingBlue,
                             ),
                           );

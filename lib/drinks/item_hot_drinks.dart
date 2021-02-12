@@ -4,7 +4,7 @@ import 'package:estructura_practica_1/models/product_hot_drinks.dart';
 import '../colors.dart';
 
 class ItemHotDrinks extends StatefulWidget {
-  final ProductHotDrinks drink;
+  ProductHotDrinks drink;
   ItemHotDrinks({
     Key key,
     @required this.drink,
@@ -111,4 +111,3 @@ class _ItemHotDrinksState extends State<ItemHotDrinks> {
     );
   }
 }
-
