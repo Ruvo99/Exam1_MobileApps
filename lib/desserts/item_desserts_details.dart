@@ -127,7 +127,7 @@ class _ItemDessertsDetailsState extends State<ItemDessertsDetails> {
                 Container(
                   child: Flexible(
                     child: Text(
-                      "\$${style == 1 ? dessert.productPrice * 0.1 : dessert.productPrice}",
+                      "\$${style == 1 ? (dessert.productPrice * 0.1).toStringAsFixed(2) : dessert.productPrice}",
                       style: TextStyle(fontSize: 28.0),
                     ),
                   ),
