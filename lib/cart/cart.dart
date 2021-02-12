@@ -127,11 +127,9 @@ class _CartState extends State<Cart> {
                               color: cuppingBlue,
                               icon: Icon(Icons.add_circle_outline),
                               onPressed: () {
-                                print(widget.productsList[index].productAmount);
                                 setState(() {
                                   widget.productsList[index].productAmount += 1;
                                 });
-                                print(widget.productsList[index].productAmount);
                               },
                             )),
                         Container(
