@@ -2,6 +2,10 @@ import 'package:estructura_practica_1/colors.dart';
 import 'package:estructura_practica_1/desserts/desserts_page.dart';
 import 'package:estructura_practica_1/drinks/hot_drinks_page.dart';
 import 'package:estructura_practica_1/grains/grains_page.dart';
+import 'package:estructura_practica_1/models/product_desserts.dart';
+import 'package:estructura_practica_1/models/product_grains.dart';
+import 'package:estructura_practica_1/models/product_hot_drinks.dart';
+import 'package:estructura_practica_1/models/product_item_cart.dart';
 import 'package:estructura_practica_1/models/product_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/home/item_home.dart';
@@ -18,7 +22,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  ProductCart cart = new ProductCart(drinks: [], grains: [], desserts: []);
+  ProductCart cart =
+      new ProductCart(products: List<ProductItemCart>.empty(growable: true));
+  List<ProductHotDrinks> drinksList =
+      ProductRepository.loadProducts(ProductType.BEBIDAS);
+  List<ProductDessert> dessertList =
+      ProductRepository.loadProducts(ProductType.POSTRES);
+  List<ProductGrains> grainsList =
+      ProductRepository.loadProducts(ProductType.GRANO);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +40,9 @@ class _HomeState extends State<Home> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
+            onPressed: () {
+              print(cart.products);
+            },
           ),
           IconButton(
             icon: Icon(Icons.person),
@@ -78,49 +91,45 @@ class _HomeState extends State<Home> {
   }
 
   void _openHotDrinksPage() {
-    Navigator.of(context)
-        .push(
+    Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => HotDrinksPage(
-            drinksList: ProductRepository.loadProducts(ProductType.BEBIDAS)),
+        builder: (context) => HotDrinksPage(drinksList: drinksList, cart: cart),
       ),
     )
-        .then((selection) {
-      if (selection != null) {
-        print(selection);
-        cart.drinks += selection;
-        print(cart.drinks);
-      } else {
-        print("no hay");
-      }
-      // print(resultado.productTitle);
-    });
-    ;
+        //     .then((selection) {
+        //   if (selection != null) {
+        //     print(selection);
+        //     cart.drinks += selection;
+        //     print(cart.drinks);
+        //   } else {
+        //     print("no hay");
+        //   }
+        //   // print(resultado.productTitle);
+        // });
+        ;
   }
 
   void _openGrainsPage() {
-    Navigator.of(context)
-        .push(
+    Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => GrainsPage(
-            grainsList: ProductRepository.loadProducts(ProductType.GRANO)),
+        builder: (context) => GrainsPage(grainsList: grainsList, cart: cart),
       ),
-    )
-        .then((selection) {
-      if (selection != null) {
-        cart.grains += selection;
-        print(cart.grains);
-      } else {
-        print('You have not selected anything yet');
-      }
-    });
+    );
+    //     .then((selection) {
+    //   if (selection != null) {
+    //     cart.grains += selection;
+    //     print(cart.grains);
+    //   } else {
+    //     print('You have not selected anything yet');
+    //   }
+    // });
   }
 
   void _openDessertPage() {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => DessertsPage(
-            dessertsList: ProductRepository.loadProducts(ProductType.POSTRES)),
+        builder: (context) =>
+            DessertsPage(dessertsList: dessertList, cart: cart),
       ),
     );
   }

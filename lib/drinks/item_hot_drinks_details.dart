@@ -1,10 +1,15 @@
 import 'package:estructura_practica_1/models/product_cart.dart';
 import 'package:estructura_practica_1/colors.dart';
 import 'package:estructura_practica_1/models/product_hot_drinks.dart';
+import 'package:estructura_practica_1/models/product_item_cart.dart';
 import 'package:flutter/material.dart';
 
 class ItemHotDrinksDetails extends StatefulWidget {
-  ItemHotDrinksDetails({Key key}) : super(key: key);
+  ProductCart cart;
+  ItemHotDrinksDetails({
+    Key key,
+    @required this.cart,
+  }) : super(key: key);
 
   @override
   _ItemHotDrinksDetailsState createState() => _ItemHotDrinksDetailsState();
@@ -16,8 +21,8 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
   @override
   Widget build(BuildContext context) {
     ProductHotDrinks hotDrink = ModalRoute.of(context).settings.arguments;
-    ProductCart cart = new ProductCart();
-    cart.drinks = [];
+    // ProductCart cart = new ProductCart();
+    // cart.drinks = [];
     return Scaffold(
       appBar: AppBar(
         title: Text("${hotDrink.productTitle}"),
@@ -132,7 +137,7 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                   Container(
                     child: Flexible(
                       child: Text(
-                        "\$${cupSize == 3 ? hotDrink.productPrice : cupSize == 2 ? hotDrink.productPrice * 0.7 : hotDrink.productPrice * 0.5}",
+                        "\$${cupSize == 3 ? hotDrink.productPrice : cupSize == 2 ? (hotDrink.productPrice * 0.7).toStringAsFixed(2) : (hotDrink.productPrice * 0.5).toStringAsFixed(2)}",
                         style: TextStyle(fontSize: 28.0),
                       ),
                     ),
@@ -237,7 +242,20 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                           backgroundColor: cuppingGrey,
                         ),
                         onPressed: () {
-                          Navigator.of(context).pop(hotDrink);
+                          print(widget.cart.products);
+                          widget.cart.products.add(
+                            ProductItemCart(
+                              productLiked: hotDrink.liked,
+                              productTitle: hotDrink.productTitle,
+                              productAmount: 1,
+                              productPrice: cupSize == 3
+                                  ? hotDrink.productPrice
+                                  : cupSize == 2
+                                      ? (hotDrink.productPrice * 0.7)
+                                      : (hotDrink.productPrice * 0.5),
+                            ),
+                          );
+                          print(widget.cart.products);
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(

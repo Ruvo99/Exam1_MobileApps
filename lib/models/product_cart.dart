@@ -1,15 +1,18 @@
 import 'package:estructura_practica_1/models/product_desserts.dart';
 import 'package:estructura_practica_1/models/product_hot_drinks.dart';
 import 'package:estructura_practica_1/models/product_grains.dart';
+import 'package:estructura_practica_1/models/product_item_cart.dart';
 
 class ProductCart {
-  List<ProductHotDrinks> drinks;
-  List<ProductGrains> grains;
-  List<ProductDessert> desserts;
+  List<ProductItemCart> products;
+  // List<ProductHotDrinks> drinks;
+  // List<ProductGrains> grains;
+  // List<ProductDessert> desserts;
 
   ProductCart({
-    this.drinks,
-    this.grains,
-    this.desserts,
+    this.products,
+    // this.drinks,
+    // this.grains,
+    // this.desserts,
   });
 }

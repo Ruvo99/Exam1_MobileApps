@@ -1,4 +1,5 @@
 import 'package:estructura_practica_1/grains/item_grains_details.dart';
+import 'package:estructura_practica_1/models/product_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/grains/item_grains.dart';
 import 'package:estructura_practica_1/models/product_grains.dart';
@@ -6,9 +7,11 @@ import '../profile.dart';
 
 class GrainsPage extends StatefulWidget {
   final List<ProductGrains> grainsList;
+  ProductCart cart;
   GrainsPage({
     Key key,
     @required this.grainsList,
+    @required this.cart,
   }) : super(key: key);
 
   @override
@@ -16,20 +19,19 @@ class GrainsPage extends StatefulWidget {
 }
 
 class _GrainsPageState extends State<GrainsPage> {
-  var grainsCartList = List<ProductGrains>.empty(growable: true);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Granos"),
-        leading: IconButton(
-          icon: Icon(Icons.chevron_left),
-          onPressed: () {
-            Navigator.of(context).pop(grainsCartList);
-          },
-        ),
         centerTitle: true,
         actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              print(widget.cart.products);
+            },
+          ),
           IconButton(
             icon: Icon(Icons.person),
             onPressed: () {
@@ -48,19 +50,11 @@ class _GrainsPageState extends State<GrainsPage> {
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {
-              Navigator.of(context)
-                  .push(
+              Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => ItemGrainsDetails(),
+                  builder: (context) => ItemGrainsDetails(cart: widget.cart),
                   settings: RouteSettings(arguments: widget.grainsList[index]),
                 ),
-              )
-                  .then(
-                (selection) {
-                  print(selection);
-                  grainsCartList.add(selection);
-                  print(grainsCartList);
-                },
               );
             },
             child: ItemGrains(
