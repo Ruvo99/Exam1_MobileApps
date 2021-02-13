@@ -50,15 +50,7 @@ class _HomeState extends State<Home> {
                 ),
               );
             },
-          ),
-          IconButton(
-            icon: Icon(Icons.person),
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => Payment()),
-              );
-            },
-          ),
+          )
         ],
       ),
       drawer: Profile(),

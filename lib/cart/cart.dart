@@ -32,16 +32,6 @@ class _CartState extends State<Cart> {
       appBar: AppBar(
         centerTitle: true,
         title: Text("Lista de compras"),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.person),
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => Profile()),
-              );
-            },
-          ),
-        ],
       ),
       body: Column(
         children: [

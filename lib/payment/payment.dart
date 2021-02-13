@@ -24,14 +24,6 @@ class _PaymentState extends State<Payment> {
             icon: Icon(Icons.shopping_cart),
             onPressed: () {},
           ),
-          IconButton(
-            icon: Icon(Icons.person),
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => Profile()),
-              );
-            },
-          ),
         ],
       ),
       body: ListView(
